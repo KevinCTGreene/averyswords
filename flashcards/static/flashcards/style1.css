@@ -1,0 +1,39 @@
+body {
+	background-color: #DCDBD9;
+	color: #2C2C2C;
+	font: normal 100% Cambria, George, serif;
+	}
+	
+h1 {
+		font-size:1.5em;
+		font-style: italic;
+		font-weight: normal;
+		}
+		
+h2{
+		font-size:1.5em;
+		font-style: italic;
+		font-weight: normal;
+		}
+h1 a {
+		color: #747474;
+		font: bold .4583333em Calibri, Optima, Arial, sans-serif;
+		letter-spacing: 0.15em;
+		text-tansform: uppercase;
+		text-decoration: none;
+	}
+#page {
+	margin: 36px auto;
+	width: 90%;
+}
+
+.blog {
+	margin: 0 auto 53px;
+	width: 93.75%;
+}
+
+.blog .main {
+	background-color: #FAFFFF;
+	float: left;
+	width: 556px;
+}

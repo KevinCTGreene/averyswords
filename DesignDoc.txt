@@ -1,0 +1,28 @@
+Avery's Words
+Kevin Greene
+7/30/2014
+----------------------------------------------------------------------
+
+Avery's words is a web application (averyswords.com) to teach Avery to read.
+
+Core features:
+*Display 5 words for Avery on individual pages, and be able to go back in forth between them.
+*The word should be in a large red, bold font.
+*The word should be able to be clicked  which will show a picture of the word.
+*The words will have a 5 day date range, after which a new set of words will be exposed.
+*Reporting: At the beginning of each new set of words, send an e-mail and text to family members to remind them to read Avery her words.
+*Responsive CSS for mobile templating. The app should look good on iPad and phones, as well as PC.
+
+Optional: a toggle to have the picture or word come up first.
+Optional: a button to play a sound, perhaps a recording of me saying the word.
+Optional: a button to mark the word to come back to later
+Optional: View to see words Avery has already looked at
+
+Word Parameters:
+Date Active:
+End Date:
+Marked?
+Completed?
+
+
+

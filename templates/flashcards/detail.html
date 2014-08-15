@@ -1,0 +1,125 @@
+{% load staticfiles %}
+
+
+
+<!DOCTYPE html>
+<script type="text/javascript">
+  
+function toggle_text(shown, hidden) {
+       var e = document.getElementById(shown);
+       var f = document.getElementById(hidden);
+    if(e.style.display == 'inline') {
+                  e.style.display = 'none';
+                  f.style.display = 'inline';
+      }
+      else {
+                  e.style.display = 'inline';
+                  f.style.display = 'none';
+      }
+}
+</script>
+<html><head>
+
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+		<link rel="stylesheet" type="text/css" href="{% static 'flashcards/tablet.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'flashcards/panes.css' %}" />
+        <style type="text/css">
+            /* Pane configuration */
+            .left.col { width: 100px; }
+            .right.col { left: 100px; right: 0; }
+            .header.row { height: 30px; line-height: 30px; }
+            .body.row { top: 30px; bottom: 10px; }
+            .footer.row { height: 10px; bottom: 0; line-height: 50px; }
+			
+			
+        </style>
+    </head>
+    <body>
+	<h1>test</h1>
+        <div class="left col">
+            <div class="header row">
+                <!--Navigation-->
+            </div>
+            <div class="body row scroll-y">
+                <ul class="listview">
+					
+				  <!-- li class="selected">One</li><li>Two</li><li>Three</li>-->
+					{% if active_words %}
+					{% for word in active_words %}
+					<li><a href="{% url 'flashcards:detail' word.content %}">{{ word.content}}</a></li>
+					{% endfor %}
+					{% else %}
+					<p>No Words are available.</p>
+					{% endif %}
+
+                </ul>
+            </div>
+            <div class="footer row">
+                <!--Icons go here-->
+            </div>
+        </div>
+        <div class="right col">
+            <div class="header row">
+                <!--View or edit something-->
+            </div>
+            <div class="body row scroll-y">
+<!--{% if prev_word %}
+	<a href="{% url 'flashcards:detail' prev_word.content %}">{{ prev_word.content}}</a>
+{% else %}
+    <p>No previous word.</p>
+{% endif %}-->
+<div id="shown_first" style="display:inline">
+      <a style="cursor:pointer" onclick="toggle_text('shown_first', 'hidden_first')">
+      <h1 style="color:red;font-size:30vw;">{{ flashcard.content }}</h1>
+      </a>
+</div>
+<div id="hidden_first" style="display:none">
+      <a style="cursor:pointer" onclick="toggle_text('shown_first', 'hidden_first')">
+		<div id="container">
+			<img id="theImage"  src={{image_address}} style="max-width:100%;height:auto;">
+		<br /><br />
+</div>
+     
+      </a>
+</div>
+
+Date active: {{ flashcard.activedate }}</br>
+End date: {{flashcard.enddate }}</br>
+
+
+<form action="{% url 'flashcards:update' flashcard.content %}" method="post">
+{% csrf_token %}
+{% if flashcard.marked == True %}
+	<input type="checkbox" name="check1" value="marked" id="marked" checked="yes"/>Marked<br />
+{% else %}
+	<input type="checkbox" name="check1" value="marked" id="marked"/>Marked<br />
+{% endif %}
+
+{% if flashcard.mastered %}
+	<input type="checkbox" name="check2" value="mastered" id="mastered" checked="yes"/>Mastered<br />
+{% else %}
+	<input type="checkbox" name="check2" value="mastered" id="mastered"/>Mastered<br />
+{% endif %}
+
+<input type="submit" value="Update" />
+</form>
+<!--
+{% if next_word %}
+	<a href="{% url 'flashcards:detail' next_word.content %}">Next Word</a>
+{% else %}
+    <p>No next word.</p>
+{% endif %}-->
+				
+            </div>
+            <div class="footer row">
+                <!--Some status text here-->
+            </div>
+        </div>
+
+        <!--<script src="two-columns_files/iemobile-fix.js" type="text/javascript"></script>-->
+ 	
+	
+</body></html>

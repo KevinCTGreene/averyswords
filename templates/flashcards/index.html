@@ -1,0 +1,132 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+		<link rel="stylesheet" type="text/css" href="{% static 'flashcards/tablet.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'flashcards/panes.css' %}" />
+        <style type="text/css">
+            /* Pane configuration */
+            .left.col { width: 100px; }
+            .right.col { left: 100px; right: 0; }
+            .header.row { height: 30px; line-height: 30px; }
+            .body.row { top: 30px; bottom: 10px; }
+            .footer.row { height: 10px; bottom: 0; line-height: 50px; }
+        </style>
+    </head>
+    <body>
+        <div class="left col">
+            <div class="header row">
+                Words of the Week
+            </div>
+            <div class="body row scroll-y">
+                <ul class="listview">
+				
+                    <!-- <li class="selected">One</li><li>Two</li><li>Three</li> -->
+					{% if active_words %}
+					{% for word in active_words %}
+					<li><a href="{% url 'flashcards:detail' word.content %}">{{ word.content}}</a></li>
+					{% endfor %}
+					{% else %}
+					<p>No Words are available.</p>
+					{% endif %}
+
+					
+                </ul>
+            </div>
+            <div class="footer row">
+                <!--Icons go here-->
+            </div>
+        </div>
+        <div class="right col">
+            <div class="header row">
+                Welcome to Avery's words!
+				<!--View or edit something-->
+            </div>
+            <div class="body row scroll-y">
+			
+
+
+<h2>Avery's words for the week are:</h2>
+
+
+{% if active_words %}
+    <ul>
+    {% for word in active_words %}
+        <li><a href="{% url 'flashcards:detail' word.content %}">{{ word.content}}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Words are available.</p>
+{% endif %}
+
+
+<h2>Past words:</h2>
+{% if old_words %}
+    <ul>
+    {% for word in old_words %}
+        <li><a href="{% url 'flashcards:detail' word.content %}">{{ word.content}}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Words are available.</p>
+{% endif %}
+
+<!-- Words with the mastered flag set to true -->
+<h2>Words Avery has mastered:</h2>
+{% if mastered_words %}
+    <ul>
+    {% for word in mastered_words %}
+        <li><a href="{% url 'flashcards:detail' word.content %}">{{ word.content}}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Words are available.</p>
+{% endif %}
+
+<!-- Words with the marked flag set to true -->
+<h2>Words Avery needs to work on:</h2>
+{% if marked_words %}
+    <ul>
+    {% for word in marked_words %}
+        <li><a href="{% url 'flashcards:detail' word.content %}">{{ word.content}}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Words are available.</p>
+{% endif %}
+
+                <!--- Defaults
+				<h3>Here are some other controls</h3>
+                <ul class="listview inset">
+                    <li>One</li><li>Two</li><li>Three</li>
+                </ul>
+
+                <p>... and here's a horizontally-scrollable thing:</p>
+
+                <div class="scroll-x tiles">
+                    <ul>
+                        <li>Asia</li>
+                        <li>Africa</li>
+                        <li>America</li>
+                        <li>Antarctica</li>
+                        <li>Australia</li>
+                        <li>Europe</li>
+                    </ul>
+                </div>
+
+                <p>That's enough.</p><p>That's enough.</p><p>That's enough.</p> --->
+				
+				
+            </div>
+            <div class="footer row">
+                <!--Some status text here-->
+            </div>
+        </div>
+
+        <script src="two-columns_files/iemobile-fix.js" type="text/javascript"></script>
+    
+</body></html>
+
+
