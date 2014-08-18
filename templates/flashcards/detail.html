@@ -61,9 +61,23 @@ function toggle_text(shown, hidden) {
             
             
 		<div style="text-align: center;">
-		  <img src= "{% static 'flashcards/blue_arrow_left.png' %}"> 
-		  <img src= "{% static 'flashcards/blue_arrow_right.png' %}">
+
+		{% if prev_word %}
+			<a href="{% url 'flashcards:detail' prev_word.content %}"><img src= "{% static 'flashcards/blue_arrow_left.png' %}"></a>
+		{% else %}
+			
+		{% endif %}
+		
+
+		{% if next_word %}
+			<a href="{% url 'flashcards:detail' next_word.content %}"><img src= "{% static 'flashcards/blue_arrow_right.png' %}"></a>
+		{% else %}
+			
+		{% endif %}
+		  
 		</div>
+		
+		
             </div>
             <div class="footer row">
                 <!--Icons go here-->
@@ -75,11 +89,7 @@ function toggle_text(shown, hidden) {
                 <!--View or edit something-->
             </div>
             <div class="body row scroll-y">
-<!--{% if prev_word %}
-	<a href="{% url 'flashcards:detail' prev_word.content %}">{{ prev_word.content}}</a>
-{% else %}
-    <p>No previous word.</p>
-{% endif %}-->
+
 <div id="shown_first" style="display:inline">
       <a style="cursor:pointer" onclick="toggle_text('shown_first', 'hidden_first')">
       <h1 style="color:red;font-size:30vw;">{{ flashcard.content }}</h1>
@@ -115,13 +125,7 @@ End date: {{flashcard.enddate }}</br>
 
 <input type="submit" value="Update" />
 </form>
-<!--
-{% if next_word %}
-	<a href="{% url 'flashcards:detail' next_word.content %}">Next Word</a>
-{% else %}
-    <p>No next word.</p>
-{% endif %}-->
-				
+		
             </div>
             <div class="footer row">
                 <!--Some status text here-->
