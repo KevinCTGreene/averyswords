@@ -32,7 +32,7 @@ function toggle_text(shown, hidden) {
             .right.col { left: 100px; right: 0; }
             .header.row { height: 30px; line-height: 30px; }
             .body.row { top: 30px; bottom: 10px; }
-            .footer.row { height: 10px; bottom: 0; line-height: 50px; }
+            .footer.row { height: 30px; bottom: 0; line-height: 50px; }
 			
 			
         </style>
@@ -59,28 +59,29 @@ function toggle_text(shown, hidden) {
                 </ul>
 
             
-            
+        <!-- Nav arrows -->    
 		<div style="text-align: center;">
-
-		{% if prev_word %}
-			<a href="{% url 'flashcards:detail' prev_word.content %}"><img src= "{% static 'flashcards/blue_arrow_left.png' %}"></a>
-		{% else %}
-			
-		{% endif %}
 		
 
-		{% if next_word %}
-			<a href="{% url 'flashcards:detail' next_word.content %}"><img src= "{% static 'flashcards/blue_arrow_right.png' %}"></a>
-		{% else %}
-			
-		{% endif %}
 		  
 		</div>
 		
 		
             </div>
-            <div class="footer row">
+            <div class="footer row" align=>
                 <!--Icons go here-->
+			{% if prev_word %}
+			<a href="{% url 'flashcards:detail' prev_word.content %}"><img src= "{% static 'flashcards/blue_arrow_left.png' %}"></a>
+			{% else %}
+			
+			{% endif %}
+		
+
+			{% if next_word %}
+			<a href="{% url 'flashcards:detail' next_word.content %}"><img src= "{% static 'flashcards/blue_arrow_right.png' %}"></a>
+			{% else %}
+			
+			{% endif %}
             </div>
         </div>
         <div class="right col">
@@ -129,6 +130,7 @@ End date: {{flashcard.enddate }}</br>
             </div>
             <div class="footer row">
                 <!--Some status text here-->
+			
             </div>
         </div>
 
