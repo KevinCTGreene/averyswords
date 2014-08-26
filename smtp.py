@@ -1,3 +1,4 @@
+#!/usr/bin/python
 #SMTP.PY
 #Alerts family members of words for the upcoming week
 
@@ -8,13 +9,13 @@ import smtplib
 from flashcards.views import getActiveWords
 from flashcards.models import Flashcard
 
-f = open("addresses.txt", 'r')
+f = open("/usr/local/www/averyswords/addresses.txt", 'r')
 toaddrs = []
 for line in f:
 	toaddrs.append(line.rstrip())
 f.close()
 
-p = open("authinfo.txt", 'r')
+p = open("/usr/local/www/averyswords/authinfo.txt", 'r')
 #username = p.readline().rstrip()
 username = 'kctg.1985@gmail.com'
 password = 'L0ckedout'
